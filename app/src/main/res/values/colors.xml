@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gray">#31313C</color>
+    <color name="hading">#8793f6</color>
+    <color name="red">#FF0000</color>
+    <color name="OnPrimary">#FFFFFFFF</color>
+    <color name="Surface">#FFFFFFFF</color>
+    <color name="OnSurface">#000000</color>
+    <color name="Background">#FFFFFFFF</color>
+    <color name="OnBackground">#000000</color>
+    <color name="Error">#FF0000</color>
+    <color name="OnError">#FFFFFF</color>
+
+    <!-- Primary Colors -->
+    <color name="primary">#6750A4</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_container">#EADDFF</color>
+    <color name="on_primary_container">#21005D</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#625B71</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="secondary_container">#E8DEF8</color>
+    <color name="on_secondary_container">#1D192B</color>
+
+    <!-- Surface Colors -->
+    <color name="surface">#FFFBFE</color>
+    <color name="on_surface">#1C1B1F</color>
+    <color name="surface_variant">#E7E0EC</color>
+    <color name="on_surface_variant">#49454F</color>
+
+    <!-- Background Colors -->
+    <color name="background">#FFFBFE</color>
+    <color name="on_background">#1C1B1F</color>
+
+    <!-- Outline Colors -->
+    <color name="outline">#79747E</color>
+    <color name="outline_variant">#CAC4D0</color>
+
+    <!-- Status Colors -->
+    <color name="success">#4CAF50</color>
+    <color name="error">#F44336</color>
+    <color name="warning">#FF9800</color>
+
+    <!-- Legacy Colors for compatibility -->
+    <color name="blue">#6750A4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+</resources>

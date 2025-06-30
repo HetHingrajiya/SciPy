@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">SciPy</string>
+    <string name="registration">Registration</string>
+    <string name="enter_name">Enter Name</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="email">Enter Email</string>
+    <string name="contact">Enter Contact</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="welcome">Welcome</string>
+    <string name="forget_your_password">Forget your Password?</string>
+    <string name="create_new_account">Create new Account</string>
+    <string name="forget_password">Forget Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="enter_old_password">Enter Old Password</string>
+    <string name="enter_new_password">Enter New Password</string>
+    <string name="confirm_password">Confirm New Password</string>
+    <string name="submit">Submit</string>
+    <string name="profile">Profile</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="logout">LogOut</string>
+
+    <!-- Profile Screen -->
+    <string name="profile_title">Profile Settings</string>
+    <string name="profile_subtitle">Manage your account information</string>
+
+    <!-- Form Fields -->
+    <string name="hint_full_name">Full Name</string>
+    <string name="hint_email_address">Email Address</string>
+    <string name="hint_phone_number">Phone Number</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+
+    <!-- Buttons -->
+    <string name="btn_edit_profile">Edit Profile</string>
+    <string name="btn_update_profile">Update Profile</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="btn_updating">Updating…</string>
+
+    <!-- Validation Messages -->
+    <string name="error_name_required">Name is required</string>
+    <string name="error_email_required">Email is required</string>
+    <string name="error_email_invalid">Please enter a valid email</string>
+    <string name="error_phone_required">Phone number is required</string>
+    <string name="error_password_required">Password is required</string>
+    <string name="error_password_length">Password must be at least 6 characters</string>
+    <string name="error_password_mismatch">Passwords do not match</string>
+    <string name="error_fix_errors">Please fix the errors above</string>
+
+    <!-- Status Messages -->
+    <string name="status_profile_updated">Profile updated successfully!</string>
+    <string name="status_updating_profile">Updating your profile…</string>
+
+    <!-- Content Descriptions -->
+    <string name="cd_profile_avatar">Profile avatar</string>
+    <string name="cd_edit_profile">Edit profile information</string>
+    <string name="cd_save_profile">Save profile changes</string>
+    <string name="cd_cancel_edit">Cancel editing</string>
+
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_buttom_navigation">buttom_navigation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_navigation">Navigation</string>
+    <string name="title_logout">Logout</string>
+    <string name="title_profile">Profile</string>
+    <string name="category">Category</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="cart">Cart</string>
+
+
+</resources>
