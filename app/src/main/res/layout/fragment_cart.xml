@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cart_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="@dimen/_10sdp"
+    android:orientation="vertical"
+    android:padding="16dp"
     android:fitsSystemWindows="true">
 
-    <!-- RecyclerView occupying the top space -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cart_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/cart_bottom_layout" />
+        android:layout_height="591dp"
+        android:layout_weight="1"
+        android:paddingBottom="8dp" />
 
-    <!-- Bottom CardView with checkout section -->
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cart_bottom_layout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:cardElevation="@dimen/_5sdp"
-        app:cardCornerRadius="@dimen/_10sdp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="@dimen/_10sdp">
+            android:orientation="vertical">
 
             <TextView
-                android:id="@+id/cart_bottom_total"
-                style="@style/text_20"
-                android:layout_width="0dp"
+                android:id="@+id/cart_total_price"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Total:" />
+                android:text="Total: ₹0"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:padding="8dp"
+                android:background="#EEEEEE" />
 
-            <Button
-                android:id="@+id/cart_bottom_checkout"
-                android:layout_width="0dp"
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cart_pay_now"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Checkout"
-                app:backgroundTint="@color/hading" />
+                android:text="Pay Now"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="@dimen/_65sdp"
+                android:backgroundTint="@color/purple_500"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
-</RelativeLayout>
+    </ScrollView>
+</LinearLayout>

@@ -20,9 +20,9 @@ public class CategoryFragment extends Fragment {
 
     RecyclerView recyclerView;
 
-    int[] catogryId = {1, 2, 3, 4, 5};
-    String[] catogry = {"Mouse", "KeyBoard", "Cpu", "Moniter", "PenDrive"};
-    int[] imageId = {R.drawable.mouse, R.drawable.keyboard, R.drawable.cpu, R.drawable.moniter, R.drawable.moniter};
+    int[] catogryId = {1, 2, 3, 4};
+    String[] catogry = {"Mouse", "KeyBoard", "Cpu", "Moniter"};
+    int[] imageId = {R.drawable.mouse, R.drawable.keyboard, R.drawable.cpu, R.drawable.moniter};
 
     ArrayList<catogerylist> arrayList;
 

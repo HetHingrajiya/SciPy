@@ -1,7 +1,6 @@
 package com.example.scipy.Catogery;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +23,7 @@ public class subcategoryAdapter extends RecyclerView.Adapter<subcategoryAdapter.
     ArrayList<subcategorylist> arrayList;
 
     SharedPreferences sharedPreferences;
+
     public subcategoryAdapter(ArrayList<subcategorylist> arrayList, Context context) {
         this.arrayList = arrayList;
         this.context = context;
@@ -36,18 +36,6 @@ public class subcategoryAdapter extends RecyclerView.Adapter<subcategoryAdapter.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ithem_ilst, parent, false);
         return new myholder(view);
 
-    }
-
-    public class myholder extends RecyclerView.ViewHolder {
-
-        ImageView img;
-        TextView text;
-        public myholder(@NonNull View itemView) {
-            super(itemView);
-
-            img = itemView.findViewById(R.id.category_image);
-            text = itemView.findViewById(R.id.category_text);
-        }
     }
 
     @Override
@@ -65,10 +53,22 @@ public class subcategoryAdapter extends RecyclerView.Adapter<subcategoryAdapter.
         });
     }
 
-
     @Override
     public int getItemCount() {
         return arrayList.size();
+    }
+
+    public class myholder extends RecyclerView.ViewHolder {
+
+        ImageView img;
+        TextView text;
+
+        public myholder(@NonNull View itemView) {
+            super(itemView);
+
+            img = itemView.findViewById(R.id.category_image);
+            text = itemView.findViewById(R.id.category_text);
+        }
     }
 
 

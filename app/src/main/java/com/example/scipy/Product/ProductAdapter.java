@@ -45,7 +45,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.myholder
 
             img = itemView.findViewById(R.id.product_image);
             price = itemView.findViewById(R.id.product_price);
-//            discription = itemView.findViewById(R.id.product_Details);
             name = itemView.findViewById(R.id.product_name);
 
         }
@@ -57,7 +56,6 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.myholder
         holder.img.setImageResource(arrayList.get(position).getImageId());
         holder.price.setText(String.valueOf(arrayList.get(position).getProductPrice()));
 
-//        holder.discription.setText(arrayList.get(position).getProductDiscription());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

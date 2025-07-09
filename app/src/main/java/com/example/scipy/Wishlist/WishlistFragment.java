@@ -1,66 +1,89 @@
 package com.example.scipy.Wishlist;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.scipy.ConstantSp;
+import com.example.scipy.DBHelper;
 import com.example.scipy.R;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link WishlistFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+import java.util.ArrayList;
+
 public class WishlistFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private RecyclerView recyclerView;
+    private ArrayList<WishlistList> arrayList;
+    private SharedPreferences sp;
+    private SQLiteDatabase db;
 
     public WishlistFragment() {
         // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment WishlistFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static WishlistFragment newInstance(String param1, String param2) {
-        WishlistFragment fragment = new WishlistFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wishlist, container, false);
+        return inflater.inflate(R.layout.fragment_wishlist, container, false); // Reuse layout
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        Context context = requireContext();
+
+        sp = context.getSharedPreferences(ConstantSp.pref, Context.MODE_PRIVATE);
+        DBHelper helper = new DBHelper(context);
+        db = helper.getWritableDatabase();
+
+        recyclerView = view.findViewById(R.id.wishlist_recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+
+        arrayList = new ArrayList<>();
+
+        String selectWishlistQuery = "SELECT * FROM wishlist WHERE userid = '" + sp.getString(ConstantSp.userid, "") + "'";
+        Cursor cursor = db.rawQuery(selectWishlistQuery, null);
+
+        if (cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
+                WishlistList list = new WishlistList();
+                list.setWishlistid(cursor.getString(0));
+
+                String selectProductQuery = "SELECT * FROM product WHERE productid = '" + cursor.getInt(2) + "'";
+                Cursor cursor1 = db.rawQuery(selectProductQuery, null);
+
+                if (cursor1.moveToFirst()) {
+                    list.setProductid(cursor1.getString(0));
+                    list.setSubcategoryid(cursor1.getString(1));
+                    list.setName(cursor1.getString(2));
+                    list.setImage(cursor1.getInt(3));
+                    list.setPrice(cursor1.getString(4));
+                }
+
+                cursor1.close();
+                arrayList.add(list);
+            }
+
+            WishlistAdapter adapter = new WishlistAdapter(context, arrayList, db);
+            recyclerView.setAdapter(adapter);
+        }
+
+        cursor.close();
     }
 }

@@ -42,9 +42,13 @@
 
     <fragment
         android:id="@+id/navigation_cart"
-        android:name="com.example.scipy.CartFragment"
+        android:name="com.example.scipy.Cart.CartFragment"
         android:label="Cart"
-        tools:layout="@layout/fragment_cart" />
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_navigation_cart_to_wishlistFragment"
+            app:destination="@id/wishlistFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/wishlistFragment"
@@ -54,6 +58,9 @@
         <action
             android:id="@+id/action_wishlistFragment_to_productDetailsFragment"
             app:destination="@id/productDetailsFragment" />
+        <action
+            android:id="@+id/action_wishlistFragment_to_navigation_cart"
+            app:destination="@id/navigation_cart" />
     </fragment>
 
     <fragment
@@ -72,9 +79,9 @@
     </fragment>
     <fragment
         android:id="@+id/productDetailsFragment"
-        android:name="com.example.scipy.Product.ProductDetailsFragment"
+        android:name="com.example.scipy.Product.ProductDetailFragment"
         android:label="ProductDetailsFragment"
-        tools:layout="@layout/fragment_product_details" />
+        tools:layout="@layout/product_detail_fragment" />
     <activity
         android:id="@+id/mainActivity"
         android:name="com.example.scipy.MainActivity"

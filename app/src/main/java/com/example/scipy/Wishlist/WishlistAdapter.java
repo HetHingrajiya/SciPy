@@ -11,45 +11,63 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.scipy.ConstantSp;
-import com.example.scipy.Product.ProductDetailsFragment;
 import com.example.scipy.R;
+import com.example.scipy.Wishlist.WishlistList;
 
 import java.util.ArrayList;
 
+public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.MyHolder> {
 
-public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.myholder> {
-    ArrayList<wishlist_list> arrayList;
-    SQLiteDatabase db;
-    SharedPreferences sp;
     Context context;
+    ArrayList<WishlistList> arrayList;
+    SharedPreferences sp;
 
-    public WishlistAdapter(ArrayList<wishlist_list> arrayList, SQLiteDatabase db, Context context) {
+    SQLiteDatabase db;
+
+    public WishlistAdapter(Context context, ArrayList<WishlistList> arrayList, SQLiteDatabase db) {
+        this.context = context;
         this.arrayList = arrayList;
         this.db = db;
-        this.context = context;
+
         sp = context.getSharedPreferences(ConstantSp.pref, Context.MODE_PRIVATE);
     }
 
     @NonNull
     @Override
-    public myholder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.wishlist_list, parent, false);
-        return new myholder(view);
+    public WishlistAdapter.MyHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_wishlist, parent, false);
+        return new WishlistAdapter.MyHolder(view);
+    }
+
+    public class MyHolder extends  RecyclerView.ViewHolder{
+        ImageView image, remove;
+        TextView name, price;
+
+        public MyHolder(@NonNull View itemView) {
+            super(itemView);
+
+            image = itemView.findViewById(R.id.wishlist_image);
+            name = itemView.findViewById(R.id.wishlist_name);
+            price = itemView.findViewById(R.id.wishlist_price);
+            remove = itemView.findViewById(R.id.custom_wishlist_remove);
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull myholder holder, int position) {
-        holder.img.setImageResource(arrayList.get(position).getImg());
+    public void onBindViewHolder(@NonNull WishlistAdapter.MyHolder holder, int position) {
+        holder.image.setImageResource(arrayList.get(position).getImage());
         holder.name.setText(arrayList.get(position).getName());
         holder.price.setText(arrayList.get(position).getPrice());
 
-        holder.delete.setOnClickListener(new View.OnClickListener() {
+        holder.remove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                db.execSQL("delete from wishlist where wishlistid=?", new String[]{arrayList.get(position).getWishlistid()});
+                String deleteWishlistQuery = "DELETE FROM wishlist WHERE wishlistid = '"+arrayList.get(position).getWishlistid()+"'";
+                db.execSQL(deleteWishlistQuery);
                 arrayList.remove(position);
                 notifyDataSetChanged();
             }
@@ -58,41 +76,20 @@ public class WishlistAdapter extends RecyclerView.Adapter<WishlistAdapter.myhold
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sp.edit().putInt(ConstantSp.productId, arrayList.get(position).getImg()).commit();
-                sp.edit().putString(ConstantSp.name, arrayList.get(position).getName()).commit();
+                sp.edit().putString(ConstantSp.productId, String.valueOf(arrayList.get(position).getProductid())).commit();
+                sp.edit().putString(ConstantSp.productName, arrayList.get(position).getName()).commit();
+                sp.edit().putInt(ConstantSp.productImageId, arrayList.get(position).getImage()).commit();
                 sp.edit().putString(ConstantSp.productPrice, arrayList.get(position).getPrice()).commit();
-                sp.edit().putInt(ConstantSp.imageId, arrayList.get(position).getImg()).commit();
                 sp.edit().putString(ConstantSp.productDiscription, arrayList.get(position).getDescription()).commit();
-
-                Intent intent = new Intent(context, ProductDetailsFragment.class);
-                context.startActivity(intent);
-
+                Navigation.findNavController(view).navigate(R.id.action_wishlistFragment_to_productDetailsFragment);
             }
         });
     }
 
-    public class myholder extends RecyclerView.ViewHolder {
-
-        ImageView img, delete;
-        TextView name, price;
-
-
-        public myholder(@NonNull View itemView) {
-            super(itemView);
-            img = itemView.findViewById(R.id.image);
-            name = itemView.findViewById(R.id.name);
-            price = itemView.findViewById(R.id.price);
-            delete = itemView.findViewById(R.id.btnRemove);
-
-
-        }
-    }
     @Override
     public int getItemCount() {
         return arrayList.size();
     }
 
+
 }
-
-
-

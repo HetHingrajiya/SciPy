@@ -29,10 +29,10 @@ public class SubcategoryFragment extends Fragment {
     private SharedPreferences sp;
     private ArrayList<subcategorylist> arrayList;
 
-    private final int[] catogryId = {1, 1, 1, 4};
-    private final int[] subCatogryId = {1, 2, 3, 4};
-    private final String[] subCatogryName = {"Logitech", "Asus", "Hcl", "hp"};
-    private final int[] imageId = {R.drawable.mouse, R.drawable.mouse, R.drawable.mouse, R.drawable.moniter};
+    private final int[] catogryId = {1, 1, 2,2,3,3,4, 4};
+    private final int[] subCatogryId = {1, 2, 3, 4,5,6,7,8};
+    private final String[] subCatogryName = {"mouse", "mouse","keyboard", "keyboard", "cpu", "cpu", "moniter", "moniter",};
+    private final int[] imageId = {R.drawable.mouse, R.drawable.mouse, R.drawable.keyboard, R.drawable.keyboard, R.drawable.cpu, R.drawable.cpu, R.drawable.moniter, R.drawable.moniter};
 
     public SubcategoryFragment() {
         // Required empty public constructor

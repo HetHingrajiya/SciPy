@@ -15,6 +15,9 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.scipy.ConstantSp;
+import com.example.scipy.DBHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     String Email, Pass;
@@ -44,6 +47,15 @@ public class MainActivity extends AppCompatActivity {
         db = new DBHelper(MainActivity.this);
         SQLiteDatabase sqLiteDatabase = db.getWritableDatabase();
 
+//        // Insert dummy user if not exists (email: test@example.com, pass: 12345678)
+//        Cursor checkCursor = sqLiteDatabase.rawQuery("SELECT * FROM user WHERE email = ?", new String[]{"test@example.com"});
+////        if (checkCursor.getCount() == 0) {
+////            ContentValues cv = new ContentValues();
+////            cv.put("email", "test@example.com");
+////            cv.put("pass", "12345678");
+////            sqLiteDatabase.insert("user", null, cv);
+////        }
+////        checkCursor.close();
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override

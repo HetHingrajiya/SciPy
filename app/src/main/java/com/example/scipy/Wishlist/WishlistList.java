@@ -1,12 +1,12 @@
 package com.example.scipy.Wishlist;
 
-public class wishlist_list {
-    public int getImg() {
-        return img;
+public class WishlistList {
+    public int getImage() {
+        return image;
     }
 
-    public void setImg(int img) {
-        this.img = img;
+    public void setImage(int image) {
+        this.image = image;
     }
 
     public String getName() {
@@ -33,20 +33,12 @@ public class wishlist_list {
         this.description = description;
     }
 
-    public String getSubCatogryId() {
-        return subCatogryId;
+    public String getSubcategoryid() {
+        return subcategoryid;
     }
 
-    public void setSubCatogryId(String subCatogryId) {
-        this.subCatogryId = subCatogryId;
-    }
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId;
+    public void setSubcategoryid(String subcategoryid) {
+        this.subcategoryid = subcategoryid;
     }
 
     public String getWishlistid() {
@@ -57,6 +49,14 @@ public class wishlist_list {
         this.wishlistid = wishlistid;
     }
 
-    int img;
-    String name, price, description, subCatogryId, productId,wishlistid;
+    public String getProductid() {
+        return productid;
+    }
+
+    public void setProductid(String productid) {
+        this.productid = productid;
+    }
+
+    int image;
+    String name, price, description, subcategoryid, wishlistid, productid;
 }
